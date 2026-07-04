@@ -33,6 +33,10 @@ a:focus {
  * regular page content.
  */
 
+.below-hero {
+  position: relative;
+}
+
 .wrap {
   position: relative;
   width: 100%;
@@ -138,7 +142,7 @@ a:focus {
 /* Style and "hide" the sidebar */
 .sidebar {
   position: fixed;
-  top: 0;
+  top: var(--hero-height, 0px);
   bottom: 0;
   left: -14rem;
   width: 14rem;
@@ -294,6 +298,47 @@ a.sidebar-nav-item:focus {
   -webkit-transform: translateX(14rem);
       -ms-transform: translateX(14rem);
           transform: translateX(14rem);
+}
+
+
+/*
+ * Persistent sidebar (desktop)
+ *
+ * On wide screens there's room to show the chapter nav permanently instead
+ * of behind a toggle: `.below-hero` becomes a row with the sidebar as a
+ * normal (non-fixed) flex item, so it naturally starts right below the
+ * hero and never needs the checkbox/toggle at all.
+ */
+
+@media (min-width: 48em) {
+  .below-hero {
+    display: flex;
+    align-items: flex-start;
+  }
+  .sidebar {
+    position: sticky;
+    top: 0;
+    left: auto;
+    bottom: auto;
+    flex: 0 0 20rem;
+    width: 20rem;
+    max-height: 100vh;
+    visibility: visible;
+    font-size: .875rem;
+    -webkit-transform: none !important;
+        -ms-transform: none !important;
+            transform: none !important;
+  }
+  .wrap {
+    flex: 1 1 0%;
+    min-width: 0;
+    -webkit-transform: none !important;
+        -ms-transform: none !important;
+            transform: none !important;
+  }
+  .sidebar-toggle {
+    display: none;
+  }
 }
 
 
@@ -604,70 +649,4 @@ footer .container a{
   width: auto;
   margin-bottom: 1.5rem;
   filter: brightness(0) invert(1);
-}
-
-
-/*
- * Corner ribbon
- *
- * A diagonal corner banner linking back to Open Knowledge Nepal, in the
- * style of the "Open Knowledge" ribbon used across opendefinition.org and
- * opendatacommons.org.
- */
-
-.corner-ribbon-wrap {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 8rem;
-  height: 8rem;
-  overflow: hidden;
-  z-index: 20;
-  pointer-events: none;
-}
-
-.corner-ribbon {
-  position: absolute;
-  display: block;
-  top: 1.35rem;
-  right: -2.15rem;
-  width: 11rem;
-  padding: .3rem 0;
-  transform: rotate(45deg);
-  transform-origin: center;
-  text-align: center;
-  font-family: "Hind", "PT Sans", Helvetica, Arial, sans-serif;
-  font-size: .7rem;
-  font-weight: 600;
-  letter-spacing: .02rem;
-  color: #fff !important;
-  background: #006699;
-  box-shadow: 0 0 6px rgba(0,0,0,.3);
-  text-decoration: none;
-  pointer-events: auto;
-}
-
-.corner-ribbon:hover,
-.corner-ribbon:focus {
-  background: #00a8cc;
-  text-decoration: none;
-}
-
-@media (max-width: 30em) {
-  .corner-ribbon-wrap {
-    width: 6.5rem;
-    height: 6.5rem;
-  }
-  .corner-ribbon {
-    top: 1rem;
-    right: -2rem;
-    width: 9rem;
-    font-size: .6rem;
-  }
-}
-
-@media print {
-  .corner-ribbon-wrap {
-    display: none;
-  }
 }

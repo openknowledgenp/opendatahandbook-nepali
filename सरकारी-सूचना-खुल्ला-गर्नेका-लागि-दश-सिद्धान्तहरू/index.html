@@ -32,11 +32,20 @@
 
   <body class="theme-oknepal">
 
-    <div class="corner-ribbon-wrap">
-      <a class="corner-ribbon" href="https://oknp.org" target="_blank" rel="noopener" title="Open Knowledge Nepal">Open Knowledge Nepal</a>
+    <div class="masthead">
+      <div class="container">
+        <a class="masthead-logo" href="/" title="Home">
+          <img src="/assets/okfnepal-logo.svg" alt="Open Knowledge Foundation Nepal">
+        </a>
+        <h3 class="masthead-title">
+          <a href="/" title="Home">खुल्ला डाटा पुस्तिका</a>
+        </h3>
+        <p class="masthead-tagline">Open Knowledge Nepal</p>
+      </div>
     </div>
 
-    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+    <div class="below-hero">
+      <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
      styles, `#sidebar-checkbox` for behavior. -->
 <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
 
@@ -175,23 +184,11 @@
 </div>
 
 
-    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
-         content to avoid any CSS collisions with our real content. -->
-    <div class="wrap">
-      <div class="masthead">
-        <div class="container">
-          <a class="masthead-logo" href="/" title="Home">
-            <img src="/assets/okfnepal-logo.svg" alt="Open Knowledge Foundation Nepal">
-          </a>
-          <h3 class="masthead-title">
-            <a href="/" title="Home">खुल्ला डाटा पुस्तिका</a>
-          </h3>
-          <p class="masthead-tagline">Open Knowledge Nepal</p>
-        </div>
-      </div>
-
-      <div class="container content">
-        <div class="page">
+      <!-- Wrap is the content to shift when toggling the sidebar on mobile. We wrap
+           the content to avoid any CSS collisions with our real content. -->
+      <div class="wrap">
+        <div class="container content">
+          <div class="page">
   <h1 class="page-title">१५. सरकारी सूचना खुल्ला गर्नेका लागि  दश सिद्धान्तहरू</h1>
   <p>अक्टोबर ३०, २००७ मा खुल्ला सरकार समर्थकले Sebastopol, California मा छलफल गरे, जसमा कसरी
 सरकारले भण्डारण गरेका  सरकारी डाटा विद्युतीय प्रणालीबाट सार्वजनिक प्रयोगका लागि खोल्न सकिन्छ छलफल भयो । त्यस बिन्दु सम्म माथि, संघीय र राज्य सरकारले केही डाटा मात्र सार्वजनिक गरे त्यो पनि अनियमित र अपूर्ण रूपमा र यसले अधिवक्ताहरूको उत्तम र पूर्ण डाटाको चाहनालाई बढावा मात्र दियो । यो सम्मेलन, कार्ल मलामुड र टिम ओ रेइल्यलको नेतृत्व र सन्लाइट फाउंडेशनको अनुदानमा सञ्चालित समेलनको  परिणाममा दस सिद्धान्तहरू निक्लिए जसलाई हामीले कार्यान्वयन गर्यौ भने सरकार संग भएको डाटालाई सार्वजनिक प्रयोगमा सशक्त रुपमा ल्याउन सकिन्छ । हामी दस हद मूल्याङ्कन गर्न एक लेन्स प्रदान सिद्धान्तहरू अद्यावधिक छ र Sebastopol सूचीमा विस्तार र पहिचान गर्न सरकार डाटा खुल्ला र सुलभ सार्वजनिक गर्न छ । यो पूर्ण सूची हैन, र यो खुल्लापन सिद्धान्त अनुसार अगाडी बडी रहन्छ । यी सिद्धान्तहरू निम्न छन् :</p>
@@ -249,12 +246,12 @@
 
 
 
-        
-      </div>
-       <footer>
-        <div class="container">
-                <img class="footer-logo" src="/assets/okfnepal-logo.svg" alt="Open Knowledge Foundation Nepal">
-                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">
+          
+        </div>
+         <footer>
+          <div class="container">
+                  <img class="footer-logo" src="/assets/okfnepal-logo.svg" alt="Open Knowledge Foundation Nepal">
+                  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54.95 54.95" height="15px">
                         <title>
                             by
@@ -273,15 +270,25 @@
             </div>
       </footer>
 
-    </div>
+      </div>
 
-    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+      <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    </div>
 
     <script>
       (function(document) {
         var toggle = document.querySelector('.sidebar-toggle');
         var sidebar = document.querySelector('#sidebar');
         var checkbox = document.querySelector('#sidebar-checkbox');
+        var masthead = document.querySelector('.masthead');
+
+        function setHeroHeight() {
+          if (masthead) {
+            document.documentElement.style.setProperty('--hero-height', masthead.offsetHeight + 'px');
+          }
+        }
+        setHeroHeight();
+        window.addEventListener('resize', setHeroHeight);
 
         document.addEventListener('click', function(e) {
           var target = e.target;

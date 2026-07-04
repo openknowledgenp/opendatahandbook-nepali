@@ -32,11 +32,20 @@
 
   <body class="theme-oknepal">
 
-    <div class="corner-ribbon-wrap">
-      <a class="corner-ribbon" href="https://oknp.org" target="_blank" rel="noopener" title="Open Knowledge Nepal">Open Knowledge Nepal</a>
+    <div class="masthead">
+      <div class="container">
+        <a class="masthead-logo" href="/" title="Home">
+          <img src="/assets/okfnepal-logo.svg" alt="Open Knowledge Foundation Nepal">
+        </a>
+        <h3 class="masthead-title">
+          <a href="/" title="Home">खुल्ला डाटा पुस्तिका</a>
+        </h3>
+        <p class="masthead-tagline">Open Knowledge Nepal</p>
+      </div>
     </div>
 
-    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+    <div class="below-hero">
+      <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
      styles, `#sidebar-checkbox` for behavior. -->
 <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
 
@@ -175,23 +184,11 @@
 </div>
 
 
-    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
-         content to avoid any CSS collisions with our real content. -->
-    <div class="wrap">
-      <div class="masthead">
-        <div class="container">
-          <a class="masthead-logo" href="/" title="Home">
-            <img src="/assets/okfnepal-logo.svg" alt="Open Knowledge Foundation Nepal">
-          </a>
-          <h3 class="masthead-title">
-            <a href="/" title="Home">खुल्ला डाटा पुस्तिका</a>
-          </h3>
-          <p class="masthead-tagline">Open Knowledge Nepal</p>
-        </div>
-      </div>
-
-      <div class="container content">
-        <div class="page">
+      <!-- Wrap is the content to shift when toggling the sidebar on mobile. We wrap
+           the content to avoid any CSS collisions with our real content. -->
+      <div class="wrap">
+        <div class="container content">
+          <div class="page">
   <h1 class="page-title">१४. दिइएको ढाँचाहरू कसरी प्रयोग गर्ने?</h1>
   <p>जब तपाईंले नयाँ डाटा प्रदर्शनी गर्ने पर्ने हुन्छ जुन पहिले प्रदर्शन गरिएको हुदैन । तपाईंले लागत र उपयुक्त कामको लागि प्रयोग हुने र सबै भन्दा राम्रो सन्तुलन प्रदान गर्ने ढाँचाको छनौट गर्नुपर्दछ । प्रत्येक ढाँचाको लागि केही कुराहरूमा तपाईं सजग हुनुपर्छ, यो खण्डले तिनीहरूलाई व्याख्या गर्ने लक्ष्य लिएको छ ।</p>
 
@@ -228,12 +225,12 @@
 
 
 
-        
-      </div>
-       <footer>
-        <div class="container">
-                <img class="footer-logo" src="/assets/okfnepal-logo.svg" alt="Open Knowledge Foundation Nepal">
-                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">
+          
+        </div>
+         <footer>
+          <div class="container">
+                  <img class="footer-logo" src="/assets/okfnepal-logo.svg" alt="Open Knowledge Foundation Nepal">
+                  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54.95 54.95" height="15px">
                         <title>
                             by
@@ -252,15 +249,25 @@
             </div>
       </footer>
 
-    </div>
+      </div>
 
-    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+      <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    </div>
 
     <script>
       (function(document) {
         var toggle = document.querySelector('.sidebar-toggle');
         var sidebar = document.querySelector('#sidebar');
         var checkbox = document.querySelector('#sidebar-checkbox');
+        var masthead = document.querySelector('.masthead');
+
+        function setHeroHeight() {
+          if (masthead) {
+            document.documentElement.style.setProperty('--hero-height', masthead.offsetHeight + 'px');
+          }
+        }
+        setHeroHeight();
+        window.addEventListener('resize', setHeroHeight);
 
         document.addEventListener('click', function(e) {
           var target = e.target;
