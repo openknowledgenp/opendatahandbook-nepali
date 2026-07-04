@@ -139,7 +139,7 @@ a:focus {
  * Source: http://css-tricks.com/off-canvas-menu-with-css-target/#comment-207504
  */
 
-/* Style and "hide" the sidebar */
+/* Style and "hide" the sidebar (light theme, matching opendefinition.org's own nav drawer) */
 .sidebar {
   position: fixed;
   top: var(--hero-height, 0px);
@@ -149,25 +149,29 @@ a:focus {
   visibility: hidden;
   overflow-y: auto;
   font-family: "Hind", "PT Sans", Helvetica, Arial, sans-serif;
-  font-size: .875rem; /* 15px */
-  color: rgba(255,255,255,.6);
-  background-color: #202020;
+  font-size: .8rem;
+  color: #555;
+  background-color: #f3f3f3;
+  border-right: 1px solid #e5e5e5;
   -webkit-transition: all .3s ease-in-out;
           transition: all .3s ease-in-out;
 }
 @media (min-width: 30em) {
   .sidebar {
-    font-size: .75rem; /* 14px */
+    font-size: .7rem;
   }
 }
 
 /* Sidebar content */
 .sidebar a {
   font-weight: normal;
-  color: #fff;
+  color: #2d2d2d;
 }
 .sidebar-item {
-  padding: 1rem;
+  padding: .75rem 1rem;
+}
+.sidebar-item p {
+  color: #767676;
 }
 .sidebar-item p:last-child {
   margin-bottom: 0;
@@ -175,25 +179,29 @@ a:focus {
 
 /* Sidebar nav */
 .sidebar-nav {
-  border-bottom: 1px solid rgba(255,255,255,.1);
+  border-bottom: 1px solid rgba(0,0,0,.08);
 }
 .sidebar-nav-item {
   display: block;
-  padding: .5rem 1rem;
-  border-top: 1px solid rgba(255,255,255,.1);
+  padding: .4rem 1rem;
+  border-top: 1px solid rgba(0,0,0,.08);
 }
 .sidebar-nav-item.active,
 a.sidebar-nav-item:hover,
 a.sidebar-nav-item:focus {
   text-decoration: none;
-  color: #00d1ff;
-  background-color: rgba(255,255,255,.1);
+  color: #006699;
+  background-color: rgba(0,209,255,.12);
   border-color: transparent;
+}
+.sidebar-nav-item.active {
+  font-weight: 600;
+  box-shadow: inset 3px 0 0 #00d1ff;
 }
 
 @media (min-width: 48em) {
   .sidebar-item {
-    padding: 1.5rem;
+    padding: 1rem 1.5rem;
   }
   .sidebar-nav-item {
     padding-left:  1.5rem;
@@ -313,7 +321,7 @@ a.sidebar-nav-item:focus {
 @media (min-width: 48em) {
   .below-hero {
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
   }
   .sidebar {
     position: sticky;
@@ -322,9 +330,11 @@ a.sidebar-nav-item:focus {
     bottom: auto;
     flex: 0 0 20rem;
     width: 20rem;
-    max-height: 100vh;
+    height: auto;
+    max-height: none;
+    overflow-y: visible;
     visibility: visible;
-    font-size: .875rem;
+    font-size: .8rem;
     -webkit-transform: none !important;
         -ms-transform: none !important;
             transform: none !important;
@@ -595,7 +605,6 @@ a.pagination-item:hover {
 }
 
 /* Open Knowledge Nepal brand (shared with oknp.org, opendatacommons.org, opendefinition.org) */
-.theme-oknepal .sidebar,
 .theme-oknepal .sidebar-toggle:active,
 .theme-oknepal #sidebar-checkbox:checked ~ .wrap .sidebar-toggle {
   background-color: #006699;
