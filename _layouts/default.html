@@ -5,43 +5,40 @@
 
   <body class="theme-oknepal">
 
-    <div class="corner-ribbon-wrap">
-      <a class="corner-ribbon" href="https://oknp.org" target="_blank" rel="noopener" title="Open Knowledge Nepal">Open Knowledge Nepal</a>
+    <div class="masthead">
+      <div class="container">
+        <a class="masthead-logo" href="{{ site.baseurl }}/" title="Home">
+          <img src="{{ site.baseurl }}/assets/okfnepal-logo.svg" alt="Open Knowledge Foundation Nepal">
+        </a>
+        <h3 class="masthead-title">
+          <a href="{{ site.baseurl }}/" title="Home">{{ site.title }}</a>
+        </h3>
+        <p class="masthead-tagline">{{ site.tagline }}</p>
+      </div>
     </div>
 
-    {% include sidebar.html %}
+    <div class="below-hero">
+      {% include sidebar.html %}
 
-    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
-         content to avoid any CSS collisions with our real content. -->
-    <div class="wrap">
-      <div class="masthead">
-        <div class="container">
-          <a class="masthead-logo" href="{{ site.baseurl }}/" title="Home">
-            <img src="{{ site.baseurl }}/assets/okfnepal-logo.svg" alt="Open Knowledge Foundation Nepal">
-          </a>
-          <h3 class="masthead-title">
-            <a href="{{ site.baseurl }}/" title="Home">{{ site.title }}</a>
-          </h3>
-          <p class="masthead-tagline">{{ site.tagline }}</p>
-        </div>
-      </div>
+      <!-- Wrap is the content to shift when toggling the sidebar on mobile. We wrap
+           the content to avoid any CSS collisions with our real content. -->
+      <div class="wrap">
+        <div class="container content">
+          {{ content }}
 
-      <div class="container content">
-        {{ content }}
-
-        {% if page.url == "/" %}
-          {% assign first_chapter = site.pages | where: "layout", "page" | sort: "order" | first %}
-          {% if first_chapter %}
-            <nav class="pagination chapter-nav">
-              <a class="pagination-item solo" href="{{ site.baseurl }}{{ first_chapter.url }}">पढ्न सुरु गर्नुहोस् &rarr;</a>
-            </nav>
+          {% if page.url == "/" %}
+            {% assign first_chapter = site.pages | where: "layout", "page" | sort: "order" | first %}
+            {% if first_chapter %}
+              <nav class="pagination chapter-nav">
+                <a class="pagination-item solo" href="{{ site.baseurl }}{{ first_chapter.url }}">पढ्न सुरु गर्नुहोस् &rarr;</a>
+              </nav>
+            {% endif %}
           {% endif %}
-        {% endif %}
-      </div>
-       <footer>
-        <div class="container">
-                <img class="footer-logo" src="{{ site.baseurl }}/assets/okfnepal-logo.svg" alt="Open Knowledge Foundation Nepal">
-                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">
+        </div>
+         <footer>
+          <div class="container">
+                  <img class="footer-logo" src="{{ site.baseurl }}/assets/okfnepal-logo.svg" alt="Open Knowledge Foundation Nepal">
+                  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54.95 54.95" height="15px">
                         <title>
                             by
@@ -60,15 +57,25 @@
             </div>
       </footer>
 
-    </div>
+      </div>
 
-    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+      <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    </div>
 
     <script>
       (function(document) {
         var toggle = document.querySelector('.sidebar-toggle');
         var sidebar = document.querySelector('#sidebar');
         var checkbox = document.querySelector('#sidebar-checkbox');
+        var masthead = document.querySelector('.masthead');
+
+        function setHeroHeight() {
+          if (masthead) {
+            document.documentElement.style.setProperty('--hero-height', masthead.offsetHeight + 'px');
+          }
+        }
+        setHeroHeight();
+        window.addEventListener('resize', setHeroHeight);
 
         document.addEventListener('click', function(e) {
           var target = e.target;
