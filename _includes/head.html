@@ -17,7 +17,11 @@
   <!-- CSS -->
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/poole.css">
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/lanyon.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <!-- Fonts: Devanagari-capable serif/sans pairing (the previous PT Serif/PT Sans have no Devanagari glyphs, so Nepali text was silently falling back to the system font) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:ital,wght@0,400;0,700;1,400&display=swap">
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="{{ site.baseurl }}/assets/favicon.ico">

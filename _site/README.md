@@ -4,3 +4,4 @@ The Open Data Handbook (first issued in 2010 and regularly updated) is a guide t
 
 The Nepali version of this handbook will include content from Global [Open Data Handbook](http://opendatahandbook.org), and include Licensing terms from [Open Definition](http://opendefinition.org).
 
+Access Handbook: http://handbook.oknp.org
