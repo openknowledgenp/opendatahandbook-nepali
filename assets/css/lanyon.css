@@ -5,23 +5,23 @@ body {
 }
 
 html {
-  font-family: "Noto Serif Devanagari", "PT Serif", Georgia, "Times New Roman", serif;
+  font-family: "Hind", "PT Sans", Helvetica, Arial, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Noto Sans Devanagari", "PT Sans", Helvetica, Arial, sans-serif;
-  font-weight: 500;
+  font-family: "Hind", "PT Sans", Helvetica, Arial, sans-serif;
+  font-weight: 600;
   color: #2d2d2d;
   letter-spacing: -.025rem;
 }
 
-/* Brand links (colors shared with opendatacommons.org / opendefinition.org) */
+/* Brand links (same cyan opendatacommons.org uses for its own body links) */
 a {
-  color: #006699;
+  color: #00d1ff;
 }
 a:hover,
 a:focus {
-  color: #00a8cc;
+  color: #006699;
 }
 
 
@@ -36,6 +36,7 @@ a:focus {
 .wrap {
   position: relative;
   width: 100%;
+  background-color: #f4f4f4;
 }
 
 
@@ -55,8 +56,13 @@ a:focus {
 }
 @media (min-width: 56em) {
   .container {
-    max-width: 38rem;
+    max-width: 46rem;
   }
+}
+
+.container.content {
+  padding-top: 2.5rem;
+  padding-bottom: 1rem;
 }
 
 
@@ -67,34 +73,49 @@ a:focus {
  */
 
 .masthead {
-  padding-top:    1rem;
-  padding-bottom: 1rem;
-  margin-bottom: 3rem;
-  border-bottom: 3px solid #00d1ff;
-  background: #006699;
+  padding-top:    2.5rem;
+  padding-bottom: 2.5rem;
+  margin-bottom: 0;
+  background: #00d1ff;
+}
+.masthead-logo {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+.masthead-logo img {
+  display: block;
+  height: 2rem;
+  width: auto;
+  filter: brightness(0) invert(1);
 }
 .masthead-title {
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: .25rem;
+  font-size: 2.5rem;
+  font-weight: 700;
   color: #fff;
 }
 .masthead-title a {
   color: #fff;
 }
-.masthead-title small {
-  font-size:95%;
+.masthead-tagline {
+  margin: 0;
+  font-size: 1.1rem;
   font-weight: 400;
   color: #fff;
-  letter-spacing: 0;
-
 }
 
 @media (max-width: 48em) {
-  .masthead-title {
+  .masthead {
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
     text-align: center;
   }
-  .masthead-title small {
-    display: none;
+  .masthead-title {
+    font-size: 1.75rem;
+  }
+  .masthead-tagline {
+    font-size: 1rem;
   }
 }
 
@@ -123,7 +144,7 @@ a:focus {
   width: 14rem;
   visibility: hidden;
   overflow-y: auto;
-  font-family: "Noto Sans Devanagari", "PT Sans", Helvetica, Arial, sans-serif;
+  font-family: "Hind", "PT Sans", Helvetica, Arial, sans-serif;
   font-size: .875rem; /* 15px */
   color: rgba(255,255,255,.6);
   background-color: #202020;
@@ -325,7 +346,7 @@ a.sidebar-nav-item:focus {
   color: #999;
 }
 .related-posts li a:hover {
-  color: #00a8cc;
+  color: #006699;
   text-decoration: none;
 }
 .related-posts li a:hover small {
@@ -344,7 +365,7 @@ a.sidebar-nav-item:focus {
   overflow: hidden; /* clearfix */
   margin-left: -1rem;
   margin-right: -1rem;
-  font-family: "Noto Sans Devanagari", "PT Sans", Helvetica, Arial, sans-serif;
+  font-family: "Hind", "PT Sans", Helvetica, Arial, sans-serif;
   color: #ccc;
   text-align: center;
 }
@@ -535,7 +556,7 @@ a.pagination-item:hover {
   background-color: #006699;
 }
 .theme-oknepal .related-posts li a:hover {
-  color: #00a8cc;
+  color: #006699;
 }
 
 
@@ -564,7 +585,7 @@ a.pagination-item:hover {
 }
 footer{
   padding: 40px;
-  background: #333;
+  background: #2d2d2d;
 }
 svg{
   fill: rgb(255, 255, 255);
@@ -575,6 +596,14 @@ footer .container{
 
 footer .container a{
   color: #00d1ff !important;
+}
+
+.footer-logo {
+  display: block;
+  height: 1.75rem;
+  width: auto;
+  margin-bottom: 1.5rem;
+  filter: brightness(0) invert(1);
 }
 
 
@@ -607,7 +636,7 @@ footer .container a{
   transform: rotate(45deg);
   transform-origin: center;
   text-align: center;
-  font-family: "Noto Sans Devanagari", "PT Sans", Helvetica, Arial, sans-serif;
+  font-family: "Hind", "PT Sans", Helvetica, Arial, sans-serif;
   font-size: .7rem;
   font-weight: 600;
   letter-spacing: .02rem;
