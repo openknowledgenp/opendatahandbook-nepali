@@ -5,6 +5,10 @@
 
   <body class="theme-oknepal">
 
+    <div class="corner-ribbon-wrap">
+      <a class="corner-ribbon" href="https://oknp.org" target="_blank" rel="noopener" title="Open Knowledge Nepal">Open Knowledge Nepal</a>
+    </div>
+
     {% include sidebar.html %}
 
     <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
@@ -21,6 +25,15 @@
 
       <div class="container content">
         {{ content }}
+
+        {% if page.url == "/" %}
+          {% assign first_chapter = site.pages | where: "layout", "page" | sort: "order" | first %}
+          {% if first_chapter %}
+            <nav class="pagination chapter-nav">
+              <a class="pagination-item solo" href="{{ site.baseurl }}{{ first_chapter.url }}">पढ्न सुरु गर्नुहोस् &rarr;</a>
+            </nav>
+          {% endif %}
+        {% endif %}
       </div>
        <footer>
         <div class="container">
