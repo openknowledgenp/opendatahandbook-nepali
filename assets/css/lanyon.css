@@ -651,11 +651,3 @@ footer .container{
 footer .container a{
   color: #00d1ff !important;
 }
-
-.footer-logo {
-  display: block;
-  height: 1.75rem;
-  width: auto;
-  margin-bottom: 1.5rem;
-  filter: brightness(0) invert(1);
-}
