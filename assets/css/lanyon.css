@@ -349,14 +349,15 @@ a.sidebar-nav-item:focus {
   text-align: center;
 }
 .pagination a {
-  color: #606060;
+  color: #fff;
 }
 
 /* Pagination items can be `span`s or `a`s */
 .pagination-item {
-  background-color: #333;
+  background-color: #2d2d2d;
+  color: #fff;
   display: block;
-  padding: 0.2rem;
+  padding: .6rem;
   border: 1px solid #eee;
 }
 .pagination-item:first-child {
@@ -366,6 +367,16 @@ a.sidebar-nav-item:focus {
 /* Only provide a hover state for linked pagination items */
 a.pagination-item:hover {
   background-color: #006699;
+}
+
+.chapter-nav {
+  margin-top: 3rem;
+}
+.pagination-item.solo {
+  float: none;
+  width: auto;
+  display: inline-block;
+  border-radius: 4px;
 }
 
 @media (min-width: 30em) {
@@ -564,4 +575,70 @@ footer .container{
 
 footer .container a{
   color: #00d1ff !important;
+}
+
+
+/*
+ * Corner ribbon
+ *
+ * A diagonal corner banner linking back to Open Knowledge Nepal, in the
+ * style of the "Open Knowledge" ribbon used across opendefinition.org and
+ * opendatacommons.org.
+ */
+
+.corner-ribbon-wrap {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 8rem;
+  height: 8rem;
+  overflow: hidden;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.corner-ribbon {
+  position: absolute;
+  display: block;
+  top: 1.35rem;
+  right: -2.15rem;
+  width: 11rem;
+  padding: .3rem 0;
+  transform: rotate(45deg);
+  transform-origin: center;
+  text-align: center;
+  font-family: "Noto Sans Devanagari", "PT Sans", Helvetica, Arial, sans-serif;
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .02rem;
+  color: #fff !important;
+  background: #006699;
+  box-shadow: 0 0 6px rgba(0,0,0,.3);
+  text-decoration: none;
+  pointer-events: auto;
+}
+
+.corner-ribbon:hover,
+.corner-ribbon:focus {
+  background: #00a8cc;
+  text-decoration: none;
+}
+
+@media (max-width: 30em) {
+  .corner-ribbon-wrap {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+  .corner-ribbon {
+    top: 1rem;
+    right: -2rem;
+    width: 9rem;
+    font-size: .6rem;
+  }
+}
+
+@media print {
+  .corner-ribbon-wrap {
+    display: none;
+  }
 }
