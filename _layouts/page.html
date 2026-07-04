@@ -19,18 +19,34 @@ layout: default
   {% assign chapters_size = chapters | size %}
   {% assign prev_index = chapter_index | minus: 1 %}
   {% assign next_index = chapter_index | plus: 1 %}
-  <nav class="pagination chapter-nav">
+  <nav class="chapter-nav">
     {% if prev_index >= 0 %}
       {% assign prev_chapter = chapters[prev_index] %}
-      <a class="pagination-item older" href="{{ site.baseurl }}{{ prev_chapter.url }}">&larr; {{ prev_chapter.title }}</a>
+      <a class="chapter-nav-link chapter-nav-prev" href="{{ site.baseurl }}{{ prev_chapter.url }}">
+        <span class="chapter-nav-arrow">&larr;</span>
+        <span class="chapter-nav-text">
+          <span class="chapter-nav-label">अघिल्लो अध्याय</span>
+          <span class="chapter-nav-title">{{ prev_chapter.title }}</span>
+        </span>
+      </a>
     {% else %}
-      <a class="pagination-item older" href="{{ site.baseurl }}/">&larr; गृहपृष्ठ</a>
+      <a class="chapter-nav-link chapter-nav-prev" href="{{ site.baseurl }}/">
+        <span class="chapter-nav-arrow">&larr;</span>
+        <span class="chapter-nav-text">
+          <span class="chapter-nav-label">गृहपृष्ठ</span>
+          <span class="chapter-nav-title">खुल्ला डाटा पुस्तिका</span>
+        </span>
+      </a>
     {% endif %}
     {% if next_index < chapters_size %}
       {% assign next_chapter = chapters[next_index] %}
-      <a class="pagination-item newer" href="{{ site.baseurl }}{{ next_chapter.url }}">{{ next_chapter.title }} &rarr;</a>
-    {% else %}
-      <span class="pagination-item newer">&rarr;</span>
+      <a class="chapter-nav-link chapter-nav-next" href="{{ site.baseurl }}{{ next_chapter.url }}">
+        <span class="chapter-nav-text">
+          <span class="chapter-nav-label">अर्को अध्याय</span>
+          <span class="chapter-nav-title">{{ next_chapter.title }}</span>
+        </span>
+        <span class="chapter-nav-arrow">&rarr;</span>
+      </a>
     {% endif %}
   </nav>
 {% endif %}

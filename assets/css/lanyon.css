@@ -18,6 +18,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Brand links (same cyan opendatacommons.org uses for its own body links) */
 a {
   color: #00d1ff;
+  transition: color .15s ease;
 }
 a:hover,
 a:focus {
@@ -77,25 +78,25 @@ a:focus {
  */
 
 .masthead {
-  padding-top:    2.5rem;
-  padding-bottom: 2.5rem;
+  padding-top:    1.5rem;
+  padding-bottom: 1.5rem;
   margin-bottom: 0;
   background: #00d1ff;
 }
 .masthead-logo {
   display: inline-block;
-  margin-bottom: 1rem;
+  margin-bottom: .6rem;
 }
 .masthead-logo img {
   display: block;
-  height: 2rem;
+  height: 1.4rem;
   width: auto;
   filter: brightness(0) invert(1);
 }
 .masthead-title {
   margin-top: 0;
-  margin-bottom: .25rem;
-  font-size: 2.5rem;
+  margin-bottom: .2rem;
+  font-size: 1.75rem;
   font-weight: 700;
   color: #fff;
 }
@@ -104,22 +105,22 @@ a:focus {
 }
 .masthead-tagline {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: .9rem;
   font-weight: 400;
   color: #fff;
 }
 
 @media (max-width: 48em) {
   .masthead {
-    padding-top: 1.75rem;
-    padding-bottom: 1.75rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
     text-align: center;
   }
   .masthead-title {
-    font-size: 1.75rem;
+    font-size: 1.4rem;
   }
   .masthead-tagline {
-    font-size: 1rem;
+    font-size: .8rem;
   }
 }
 
@@ -185,6 +186,7 @@ a:focus {
   display: block;
   padding: .4rem 1rem;
   border-top: 1px solid rgba(0,0,0,.08);
+  transition: background-color .15s ease, color .15s ease;
 }
 .sidebar-nav-item.active,
 a.sidebar-nav-item:hover,
@@ -410,69 +412,124 @@ a.sidebar-nav-item:focus {
 
 
 /*
- * Pagination
+ * Chapter navigation (previous/next)
  *
- * Super lightweight (HTML-wise) blog pagination. `span`s are provide for when
- * there are no more previous or next posts to show.
+ * Modern card-style links at the bottom of each chapter.
  */
 
-.pagination {
-  overflow: hidden; /* clearfix */
-  margin-left: -1rem;
-  margin-right: -1rem;
-  font-family: "Hind", "PT Sans", Helvetica, Arial, sans-serif;
-  color: #ccc;
+.chapter-nav {
+  display: flex;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e5e5e5;
+}
+
+.chapter-nav-link {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  flex: 1 1 0%;
+  min-width: 0;
+  padding: 1rem 1.25rem;
+  border-radius: .75rem;
+  border: 1px solid #e5e5e5;
+  background-color: #fff;
+  color: #2d2d2d;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.chapter-nav-link:hover,
+.chapter-nav-link:focus {
+  color: #2d2d2d;
+  border-color: #00d1ff;
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.chapter-nav-next {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.chapter-nav-arrow {
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: #00d1ff;
+}
+
+.chapter-nav-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.chapter-nav-label {
+  font-size: .65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: #999;
+  margin-bottom: .2rem;
+}
+
+.chapter-nav-title {
+  font-weight: 600;
+  font-size: .9rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 30em) {
+  .chapter-nav {
+    flex-direction: column;
+  }
+  .chapter-nav-next {
+    text-align: left;
+    justify-content: flex-start;
+  }
+}
+
+
+/*
+ * Reading CTA
+ *
+ * The "start reading" button on the homepage.
+ */
+
+.reading-cta {
+  margin-top: 3rem;
   text-align: center;
 }
-.pagination a {
-  color: #fff;
-}
 
-/* Pagination items can be `span`s or `a`s */
-.pagination-item {
-  background-color: #2d2d2d;
+.reading-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .8rem 1.75rem;
+  border-radius: 999px;
+  background-color: #00d1ff;
   color: #fff;
-  display: block;
-  padding: .6rem;
-  border: 1px solid #eee;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0,209,255,.35);
+  transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
 }
-.pagination-item:first-child {
-  margin-bottom: -1px;
-}
-
-/* Only provide a hover state for linked pagination items */
-a.pagination-item:hover {
+.reading-cta-btn:hover,
+.reading-cta-btn:focus {
   background-color: #006699;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0,102,153,.35);
+  transform: translateY(-2px);
+  text-decoration: none;
 }
-
-.chapter-nav {
-  margin-top: 3rem;
+.reading-cta-arrow {
+  transition: transform .15s ease;
 }
-.pagination-item.solo {
-  float: none;
-  width: auto;
-  display: inline-block;
-  border-radius: 4px;
-}
-
-@media (min-width: 30em) {
-  .pagination {
-    margin: 3rem 0;
-  }
-  .pagination-item {
-    float: left;
-    width: 50%;
-  }
-  .pagination-item:first-child {
-    margin-bottom: 0;
-    border-top-left-radius:    4px;
-    border-bottom-left-radius: 4px;
-  }
-  .pagination-item:last-child {
-    margin-left: -1px;
-    border-top-right-radius:    4px;
-    border-bottom-right-radius: 4px;
-  }
+.reading-cta-btn:hover .reading-cta-arrow {
+  transform: translateX(3px);
 }
 
 
@@ -646,6 +703,8 @@ svg{
 }
 footer .container{
   color: #fff;
+  font-size: .8rem;
+  line-height: 1.6;
 }
 
 footer .container a{

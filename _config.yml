@@ -1,6 +1,6 @@
 # Setup
 title:               खुल्ला डाटा पुस्तिका
-tagline:             'Open Knowledge Nepal'
+tagline:             'Open Knowledge Foundation Nepal'
 description:         'खुल्ला डाटा पुस्तिका'
 url:                 https://handbook.oknp.org
 baseurl:             ''
@@ -10,7 +10,7 @@ plugins:
 
 # About/contact
 author:
-  name:              Open Knowledge Nepal - Project
+  name:              Open Knowledge Foundation Nepal - Project
   url:               https://twitter.com/okfn_np/
   email:             openknowledgenepal@gmail.com
 
