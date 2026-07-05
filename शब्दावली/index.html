@@ -1,192 +1,227 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="खुल्ला डाटा पुस्तिका - खुल्ला डाटाका कानुनी, सामाजिक र प्राविधिक पक्षहरूको पहिलो नेपाली संस्करण। Open Knowledge Foundation Nepal।">
+<title>१८. शब्दावली · खुल्ला डाटा पुस्तिका</title>
+<link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script>(function(){try{var s=localStorage.getItem('odh-theme');var d=s?s:(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',d);}catch(e){}})();</script>
+<style>
+:root{
+  /* ---- OKNP locked palette (light) ---- */
+  --brand:#3E8E2F; --brand-strong:#2F6E23; --brand-soft:#E8F3E1; --brand-tint:#F2F8EC;
+  --accent:#E8622C; --accent-strong:#C64E1E; --accent-soft:#FCEBE2;
+  --ink:#1E3018; --body:#3A4536; --muted:#6B7A64; --line:#DEE7D9;
+  --bg:#FFFFFF; --bg-alt:#F5F8F2; --card:#FFFFFF; --code-bg:#16240F; --code-ink:#E8F3E1;
+  --ring:rgba(62,142,47,.35);
+  /* spacing (8px base) */
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:64px; --s9:96px;
+  /* radius + shadow */
+  --r1:8px; --r2:12px; --r3:20px; --pill:999px;
+  --sh1:0 1px 2px rgba(16,48,46,.06),0 1px 3px rgba(16,48,46,.05);
+  --sh2:0 6px 18px rgba(16,48,46,.08),0 2px 6px rgba(16,48,46,.05);
+  --sh3:0 18px 44px rgba(16,48,46,.14);
+  /* type scale */
+  --fs-h1:clamp(2.1rem,1.35rem+2.9vw,3.15rem);
+  --fs-h2:clamp(1.55rem,1.15rem+1.5vw,2.15rem);
+  --fs-h3:1.35rem; --fs-h4:1.12rem;
+  --fs-lead:clamp(1.08rem,1rem+.35vw,1.28rem);
+  --fs-body:1.0625rem; --fs-small:.92rem; --fs-label:.8rem;
+  --lh-body:1.9; --lh-head:1.22;
+  --wrap:1200px; --read:74ch;
+  --hh:74px;
+}
+:root[data-theme="dark"]{
+  --brand:#79C74F; --brand-strong:#95D66F; --brand-soft:#16300F; --brand-tint:#132611;
+  --accent:#FF8A5B; --accent-strong:#FFA983; --accent-soft:#3A241B;
+  --ink:#EAF3E4; --body:#C6D3BF; --muted:#8FA386; --line:#2A3F22;
+  --bg:#0F1A0C; --bg-alt:#13240F; --card:#162710; --code-bg:#0A1607; --code-ink:#DCEFD2;
+  --ring:rgba(121,199,79,.45);
+  --sh1:0 1px 2px rgba(0,0,0,.3); --sh2:0 8px 22px rgba(0,0,0,.4); --sh3:0 20px 48px rgba(0,0,0,.55);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0; background:var(--bg); color:var(--body);
+  font-family:'Mukta',system-ui,'Noto Sans Devanagari',sans-serif;
+  font-size:var(--fs-body); line-height:var(--lh-body);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+h1,h2,h3,h4{color:var(--ink); line-height:var(--lh-head); font-weight:700; margin:0 0 .5em}
+h1{font-size:var(--fs-h1); font-weight:800; letter-spacing:-.01em}
+h2{font-size:var(--fs-h2); font-weight:700}
+h3{font-size:var(--fs-h3)} h4{font-size:var(--fs-h4)}
+p{margin:0 0 1.1em; text-wrap:pretty}
+a{color:var(--brand-strong); text-decoration:none}
+a:hover{color:var(--brand)}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--wrap); margin:0 auto; padding:0 var(--s5)}
+.eyebrow{font-size:var(--fs-label); font-weight:700; letter-spacing:.14em; color:var(--brand); text-transform:uppercase; margin:0 0 var(--s3)}
+:focus-visible{outline:3px solid var(--ring); outline-offset:3px; border-radius:6px}
 
-  <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+/* ---- skip link ---- */
+.skip{position:absolute; left:var(--s4); top:-60px; z-index:200; background:var(--brand); color:#fff;
+  padding:10px 16px; border-radius:var(--r1); font-weight:600; transition:top .18s}
+.skip:focus{top:var(--s3); color:#fff}
 
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+/* ---- header ---- */
+.hdr{position:sticky; top:0; z-index:100; background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:saturate(1.4) blur(10px); border-bottom:1px solid transparent; transition:border-color .25s,box-shadow .25s,padding .25s}
+.hdr.scrolled{border-color:var(--line); box-shadow:var(--sh1)}
+.hdr-in{display:flex; align-items:center; gap:var(--s5); height:var(--hh); transition:height .25s}
+.hdr.scrolled .hdr-in{height:60px}
+.brand{display:flex; align-items:center; gap:var(--s3); color:var(--ink); font-weight:800; flex-shrink:0}
+.brand:hover{color:var(--ink)}
+.brand-mark{width:40px;height:40px;border-radius:11px;background:linear-gradient(150deg,var(--brand),var(--brand-strong));
+  display:grid;place-items:center;box-shadow:var(--sh1); transition:width .25s,height .25s}
+.hdr.scrolled .brand-mark{width:34px;height:34px}
+.brand-mark svg{width:22px;height:22px}
+.brand-txt{display:flex;flex-direction:column;line-height:1.15}
+.brand-txt b{font-size:1.02rem;letter-spacing:-.01em}
+.brand-txt span{font-size:.72rem;font-weight:600;color:var(--muted);letter-spacing:.02em}
+.nav{display:flex; align-items:center; gap:var(--s2); margin-left:auto}
+.nav a.navlink{color:var(--body); font-weight:600; font-size:.98rem; padding:8px 12px; border-radius:var(--r1); transition:background .18s,color .18s}
+.nav a.navlink:hover{background:var(--brand-soft); color:var(--brand-strong)}
+.btn{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font-weight:700;font-size:.98rem;padding:11px 18px;border-radius:var(--pill);border:1.5px solid transparent;cursor:pointer;transition:transform .16s,box-shadow .2s,background .2s,color .2s;font-family:inherit}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--brand);color:#fff;box-shadow:var(--sh1)}
+.btn-primary:hover{background:var(--brand-strong);color:#fff;box-shadow:var(--sh2);transform:translateY(-1px)}
+.btn-accent{background:var(--accent);color:#fff}
+.btn-accent:hover{background:var(--accent-strong);color:#fff;transform:translateY(-1px);box-shadow:var(--sh2)}
+.btn-ghost{background:transparent;color:var(--brand-strong);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--brand);background:var(--brand-soft)}
+.iconbtn{width:42px;height:42px;border-radius:var(--pill);border:1.5px solid var(--line);background:var(--card);color:var(--ink);
+  display:grid;place-items:center;cursor:pointer;transition:background .18s,border-color .18s,transform .16s}
+.iconbtn:hover{background:var(--brand-soft);border-color:var(--brand);color:var(--brand-strong)}
+.iconbtn svg{width:20px;height:20px}
+.sun{display:none}.moon{display:block}
+:root[data-theme="dark"] .sun{display:block}:root[data-theme="dark"] .moon{display:none}
+.menu-toggle{display:none}
 
-  <title>
-    
-      १८. शब्दावली &middot; खुल्ला डाटा पुस्तिका
-    
-  </title>
+/* ---- section rhythm ---- */
+.section{padding:var(--s9) 0}
+.section-head{max-width:64ch; margin-bottom:var(--s7)}
+.section-head.center{margin-left:auto;margin-right:auto;text-align:center}
+.alt{background:var(--bg-alt)}
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/assets/css/poole.css">
-  <link rel="stylesheet" href="/assets/css/lanyon.css">
+/* ---- footer ---- */
+.ftr{background:var(--ink);color:#cfe0dd;padding:var(--s8) 0 var(--s6);margin-top:var(--s9)}
+:root[data-theme="dark"] .ftr{background:#081312;border-top:1px solid var(--line)}
+.ftr-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:var(--s7);margin-bottom:0;align-items:center}
+.ftr-cc{border-left:1px solid rgba(255,255,255,.14);padding-left:var(--s6);color:#9fbab5;font-size:.92rem;line-height:1.75}
+.ftr h4{color:#fff;font-size:.92rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:var(--s4)}
+.ftr a{color:#a9c4bf;display:block;padding:5px 0;font-size:.96rem}
+.ftr a:hover{color:#fff}
+.ftr .fbrand{display:flex;align-items:center;gap:12px;margin-bottom:var(--s4);color:#fff;font-weight:800;font-size:1.1rem}
+.ftr .fbrand .brand-mark{width:38px;height:38px}
+.ftr p{color:#9fbab5;max-width:38ch;font-size:.95rem}
+.ftr-social{display:flex;gap:10px;margin-top:var(--s4)}
+.ftr-social a{width:38px;height:38px;border-radius:var(--pill);border:1px solid rgba(255,255,255,.18);display:grid;place-items:center;padding:0}
+.ftr-social a:hover{background:var(--brand);border-color:var(--brand)}
+.ftr-social svg{width:18px;height:18px}
+.ftr-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:var(--s5);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;align-items:center;font-size:.9rem;color:#9fbab5}
+.cc-line{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.cc-badge{display:inline-flex;gap:4px}
+.cc-badge span{width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.3);display:grid;place-items:center;font-weight:800;font-size:.82rem}
 
-  <!-- Font: Hind, a Devanagari-capable geometric sans in the same spirit as opendatacommons.org's HK Grotesk (which has no Devanagari glyphs) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&display=swap">
+/* ---- reveal ---- */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important;transition:none!important}
+ .btn{transition:none!important}}
 
-  <!-- Favicon (Open Knowledge Nepal mark, matching oknp.org) -->
-  <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+/* ---- back to top ---- */
+.totop{position:fixed;right:22px;bottom:22px;z-index:90;opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .25s,transform .25s}
+.totop.show{opacity:1;pointer-events:auto;transform:none}
+
+/* ================= CHAPTER PAGE ================= */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--brand),var(--accent));z-index:120;transition:width .1s linear}
+.crumb{padding:var(--s5) 0 0;font-size:.9rem;color:var(--muted)}
+.crumb a{color:var(--muted);font-weight:600}.crumb a:hover{color:var(--brand-strong)}
+.crumb span{color:var(--ink);font-weight:600}
+.doc{display:grid;grid-template-columns:288px minmax(0,1fr);gap:var(--s8);align-items:start;padding:var(--s6) 0 var(--s8)}
+.toc{position:sticky;top:calc(var(--hh) + 16px);max-height:calc(100vh - var(--hh) - 40px);overflow:auto;padding-right:var(--s3)}
+.toc-title{font-size:var(--fs-label);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 0 var(--s4);padding-left:12px}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:none}
+.toc li a{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;border-radius:var(--r1);color:var(--body);font-size:.92rem;font-weight:500;line-height:1.4;border-left:3px solid transparent;transition:background .16s,color .16s,border-color .16s}
+.toc li a .tn{color:var(--muted);font-weight:700;flex-shrink:0;font-variant-numeric:tabular-nums}
+.toc li a:hover{background:var(--brand-soft);color:var(--brand-strong)}
+.toc li a.active{background:var(--brand-soft);color:var(--brand-strong);border-left-color:var(--brand);font-weight:700}
+.toc li a.active .tn{color:var(--brand-strong)}
+.toc-toggle{display:none}
+.article{max-width:var(--read);font-size:1.09rem}
+.article h1{margin-bottom:var(--s5)}
+.article h2{margin-top:var(--s7);padding-top:var(--s2)}
+.article h3{margin-top:var(--s6)}
+.article p{color:var(--body)}
+.article ul,.article ol{padding-left:1.4em;margin:0 0 1.2em}
+.article li{margin-bottom:.5em}
+.lede{font-size:1.2rem;color:var(--muted);border-left:4px solid var(--brand);padding-left:var(--s5);margin-bottom:var(--s6)}
+/* callouts */
+.callout{display:flex;gap:var(--s4);border-radius:var(--r2);padding:var(--s5);margin:var(--s6) 0;border:1px solid;background:var(--card)}
+.callout .ci{flex-shrink:0;width:26px;height:26px}
+.callout p:last-child{margin-bottom:0}
+.callout b{color:var(--ink);display:block;margin-bottom:4px}
+.callout.info{border-color:color-mix(in srgb,var(--brand) 35%,var(--line));background:var(--brand-tint)}
+.callout.info .ci{color:var(--brand-strong)}
+.callout.tip{border-color:color-mix(in srgb,#2f9e5b 40%,var(--line));background:color-mix(in srgb,#2f9e5b 8%,var(--bg))}
+.callout.tip .ci{color:#2f9e5b}
+.callout.warn{border-color:color-mix(in srgb,var(--accent) 40%,var(--line));background:var(--accent-soft)}
+.callout.warn .ci{color:var(--accent-strong)}
+.callout.placeholder{border-style:dashed;border-color:var(--muted);background:var(--bg-alt)}
+.callout.placeholder .ci{color:var(--muted)}
+/* code */
+.codewrap{position:relative;margin:var(--s6) 0}
+.codewrap pre{background:var(--code-bg);color:var(--code-ink);border-radius:var(--r2);padding:var(--s5) var(--s5);overflow:auto;font-size:.92rem;line-height:1.7;margin:0}
+.codewrap code{font-family:'JetBrains Mono',ui-monospace,monospace}
+.copybtn{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.1);color:#cfe6e3;border:1px solid rgba(255,255,255,.18);
+  border-radius:8px;padding:6px 10px;font-size:.78rem;font-weight:600;cursor:pointer;display:flex;gap:6px;align-items:center;transition:background .18s}
+.copybtn:hover{background:rgba(255,255,255,.2)}
+.copybtn svg{width:14px;height:14px}
+/* chapter nav */
+.chnav{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4);margin-top:var(--s8);padding-top:var(--s6);border-top:1px solid var(--line)}
+.chnav a{display:flex;flex-direction:column;gap:4px;border:1px solid var(--line);border-radius:var(--r2);padding:var(--s5);transition:border-color .2s,transform .18s,box-shadow .2s;background:var(--card)}
+.chnav a:hover{border-color:var(--brand);box-shadow:var(--sh2);transform:translateY(-2px)}
+.chnav a.next{text-align:right;align-items:flex-end}
+.chnav small{color:var(--muted);font-weight:600;font-size:.82rem}
+.chnav b{color:var(--ink);font-size:1.02rem;font-weight:700}
+.chnav a.disabled{opacity:.4;pointer-events:none}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width:1024px){
+  .doc{grid-template-columns:1fr;gap:var(--s5)}
+  .toc{position:static;max-height:none;background:var(--card);border:1px solid var(--line);border-radius:var(--r2);padding:var(--s4);margin-top:var(--s4)}
+  .toc-toggle{display:flex;width:100%;justify-content:space-between;align-items:center;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--r2);padding:14px var(--s5);font-weight:700;color:var(--ink);cursor:pointer;font-family:inherit;font-size:1rem}
+  .toc-toggle svg{width:20px;height:20px;transition:transform .2s}
+  .toc-toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
+  .toc-panel{display:none} .toc-panel.open{display:block}
+}
+@media (max-width:960px){
+  .nav{position:fixed;inset:var(--hh) 0 auto 0;flex-direction:column;align-items:stretch;background:var(--bg);
+    border-bottom:1px solid var(--line);padding:var(--s4);gap:var(--s2);box-shadow:var(--sh2);
+    transform:translateY(-8px);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;margin-left:0}
+  .nav.open{opacity:1;transform:none;pointer-events:auto}
+  .nav a.navlink{padding:12px}
+  .nav .btn{justify-content:center}
+  .menu-toggle{display:grid;margin-left:auto}
+  .theme-wrap{margin-left:0}
+  .hdr-in{gap:var(--s3)}
+  .ftr-grid{grid-template-columns:1fr;gap:var(--s6)}
+  .ftr-cc{border-left:0;padding-left:0;border-top:1px solid rgba(255,255,255,.14);padding-top:var(--s5)}
+  .chnav{grid-template-columns:1fr}
+  .section{padding:var(--s8) 0}
+}
+</style>
 </head>
-
-
-  <body class="theme-oknepal">
-
-    <div class="masthead">
-      <div class="container">
-        <a class="masthead-logo" href="/" title="Home">
-          <img src="/assets/okfnepal-logo.svg" alt="Open Knowledge Foundation Nepal">
-        </a>
-        <h3 class="masthead-title">
-          <a href="/" title="Home">खुल्ला डाटा पुस्तिका</a>
-        </h3>
-        <p class="masthead-tagline">Open Knowledge Foundation Nepal</p>
-      </div>
-    </div>
-
-    <div class="below-hero">
-      <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
-     styles, `#sidebar-checkbox` for behavior. -->
-<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
-
-<!-- Toggleable sidebar -->
-<div class="sidebar" id="sidebar">
-  <div class="sidebar-item">
-    <p>खुल्ला डाटा पुस्तिका</p>
-  </div>
-
-  <nav class="sidebar-nav">
-    <a class="sidebar-nav-item" href="/">गृहपृष्ठ</a>
-
-    
-
-    
-    
-      
-        
-      
-    
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/परिचय/">१. परिचय</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/लक्षित-दर्शक/">२. लक्षित दर्शक</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/तपाईं-कस्तो-डाटाका-बारेमा-कुरा-गर्दै-हुनुहुन्छ/">३. तपाईं कस्तो डाटाका बारेमा कुरा गर्दै हुनुहुन्छ?</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/किन-खुल्ला-डाटा/">४. किन खुल्ला डाटा?</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/खुल्ला-डाटा-के-हो/">५. खुल्ला डाटा के हो?</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/डाटालाई-कसरी-खुल्ला-बनाउने/">६. डाटालाई कसरी खुल्ला बनाउने?</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/सम्बन्धित-लाइसेन्सहरू/">७. सम्बन्धित लाइसेन्सहरू</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/डाटालाई-प्राविधिक-रुपमा-उपलब्ध-तथा-खुल्ला-कसरी-बनाउने/">८. डाटालाई प्राविधिक रुपमा उपलब्ध तथा खुल्ला कसरी बनाउने ?</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/अनलाइन-विधिहरू/">९. अनलाइन विधिहरू</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/डाटालाई-पत्ता-लगाउन-सजिलो-बनाउनुहोस्/">१०. डाटालाई पत्ता लगाउन सजिलो बनाउनुहोस्</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/मैले-केही-डाटा-खुल्ला-गरेँ-अब-के-गर्ने/">११. मैले केही डाटा खुल्ला गरेँ, अब के गर्ने ?</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/के-कानूनी-आईपी-अधिकारहरू-डाटाबेसहरूमा/">१२. के कानूनी (आईपी) अधिकारहरू डाटाबेसहरूमा छन्</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/खुल्ला-फाइलका-ढाँचाहरू/">१३. खुल्ला फाइलका ढाँचाहरू</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/दिइएको-ढाँचाहरू-कसरी-प्रयोग-गर्ने/">१४. दिइएको ढाँचाहरू कसरी प्रयोग गर्ने?</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/सरकारी-सूचना-खुल्ला-गर्नेका-लागि-दश-सिद्धान्तहरू/">१५. सरकारी सूचना खुल्ला गर्नेका लागि  दश सिद्धान्तहरू</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/नेपालमा-भएको-विभिन्न-खुल्ला-डाटा-सम्बन्धित-उदाहरणहरू/">१६. नेपालमा भएको विभिन्न खुल्ला डाटा सम्बन्धित उदाहरणहरू</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/नेपाली-नागरिकले-सूचनाको-हक-प्रयोग-गर्ने-विधि/">१७. नेपाली नागरिकले सूचनाको हक प्रयोग गर्ने विधि</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item active" href="/शब्दावली/">१८. शब्दावली</a>
-        
-      
-    
-  </nav>
-</div>
-
-
-      <!-- Wrap is the content to shift when toggling the sidebar on mobile. We wrap
-           the content to avoid any CSS collisions with our real content. -->
-      <div class="wrap">
-        <div class="container content">
-          <div class="page">
-  <h1 class="page-title">१८. शब्दावली</h1>
-  <h3 id="आरडीएफ-rdf">आरडीएफ (RDF)</h3>
+<body>
+<a class="skip" href="#main">मुख्य सामग्रीमा जानुहोस्</a>
+<header class="hdr" id="hdr"><div class="wrap hdr-in"><a class="brand" href="/" aria-label="खुल्ला डाटा पुस्तिका, गृहपृष्ठ"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0"/><circle cx="12" cy="16" r="1.4" fill="#fff" stroke="none"/></svg></span><span class="brand-txt"><b>खुल्ला डाटा पुस्तिका</b></span></a><button class="iconbtn menu-toggle" id="menu-toggle" aria-label="मेनु खोल्नुहोस्" aria-expanded="false" aria-controls="nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><nav class="nav" id="nav" aria-label="मुख्य नेभिगेसन"><a class="navlink" href="/">गृहपृष्ठ</a><a class="navlink" href="/#chapters">अध्यायहरू</a><a class="navlink" href="/#about">हाम्रोबारे</a><a class="btn btn-primary" href="/परिचय/">पढ्न सुरु गर्नुहोस् <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><button class="iconbtn theme-wrap" id="theme-toggle" aria-label="डार्क मोड बदल्नुहोस्" aria-pressed="false"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8Z"/></svg></button></nav></div></header><div class="progress" id="progress" role="progressbar" aria-label="पढाइ प्रगति"></div>
+<main id="main"><div class="wrap"><nav class="crumb" aria-label="ब्रेडक्रम"><a href="/">गृहपृष्ठ</a> / <span>१८. शब्दावली</span></nav><div class="doc"><aside><button class="toc-toggle" id="toc-toggle" aria-expanded="false" aria-controls="toc-panel">अध्यायहरू <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button><div class="toc-panel" id="toc-panel"><nav class="toc" aria-label="पुस्तिकाका अध्यायहरू"><p class="toc-title">अध्यायहरू</p><ol><li><a href="/परिचय/"><span class="tn">१.</span> परिचय</a></li><li><a href="/लक्षित-दर्शक/"><span class="tn">२.</span> लक्षित दर्शक</a></li><li><a href="/तपाईं-कस्तो-डाटाका-बारेमा-कुरा-गर्दै-हुनुहुन्छ/"><span class="tn">३.</span> तपाईं कस्तो डाटाका बारेमा कुरा गर्दै हुनुहुन्छ?</a></li><li><a href="/किन-खुल्ला-डाटा/"><span class="tn">४.</span> किन खुल्ला डाटा?</a></li><li><a href="/खुल्ला-डाटा-के-हो/"><span class="tn">५.</span> खुल्ला डाटा के हो?</a></li><li><a href="/डाटालाई-कसरी-खुल्ला-बनाउने/"><span class="tn">६.</span> डाटालाई कसरी खुल्ला बनाउने?</a></li><li><a href="/सम्बन्धित-लाइसेन्सहरू/"><span class="tn">७.</span> सम्बन्धित लाइसेन्सहरू</a></li><li><a href="/डाटालाई-प्राविधिक-रुपमा-उपलब्ध-तथा-खुल्ला-कसरी-बनाउने/"><span class="tn">८.</span> डाटालाई प्राविधिक रुपमा उपलब्ध तथा खुल्ला कसरी बनाउने ?</a></li><li><a href="/अनलाइन-विधिहरू/"><span class="tn">९.</span> अनलाइन विधिहरू</a></li><li><a href="/डाटालाई-पत्ता-लगाउन-सजिलो-बनाउनुहोस्/"><span class="tn">१०.</span> डाटालाई पत्ता लगाउन सजिलो बनाउनुहोस्</a></li><li><a href="/मैले-केही-डाटा-खुल्ला-गरेँ-अब-के-गर्ने/"><span class="tn">११.</span> मैले केही डाटा खुल्ला गरेँ, अब के गर्ने ?</a></li><li><a href="/के-कानूनी-आईपी-अधिकारहरू-डाटाबेसहरूमा/"><span class="tn">१२.</span> के कानूनी (आईपी) अधिकारहरू डाटाबेसहरूमा छन्</a></li><li><a href="/खुल्ला-फाइलका-ढाँचाहरू/"><span class="tn">१३.</span> खुल्ला फाइलका ढाँचाहरू</a></li><li><a href="/दिइएको-ढाँचाहरू-कसरी-प्रयोग-गर्ने/"><span class="tn">१४.</span> दिइएको ढाँचाहरू कसरी प्रयोग गर्ने?</a></li><li><a href="/सरकारी-सूचना-खुल्ला-गर्नेका-लागि-दश-सिद्धान्तहरू/"><span class="tn">१५.</span> सरकारी सूचना खुल्ला गर्नेका लागि  दश सिद्धान्तहरू</a></li><li><a href="/नेपालमा-भएको-विभिन्न-खुल्ला-डाटा-सम्बन्धित-उदाहरणहरू/"><span class="tn">१६.</span> नेपालमा भएको विभिन्न खुल्ला डाटा सम्बन्धित उदाहरणहरू</a></li><li><a href="/नेपाली-नागरिकले-सूचनाको-हक-प्रयोग-गर्ने-विधि/"><span class="tn">१७.</span> नेपाली नागरिकले सूचनाको हक प्रयोग गर्ने विधि</a></li><li><a href="/शब्दावली/" class="active" aria-current="page"><span class="tn">१८.</span> शब्दावली</a></li></ol></nav></div></aside><article class="article"><h1>१८. शब्दावली</h1>
+<h3 id="आरडीएफ-rdf">आरडीएफ (RDF)</h3>
 <p>लिङ्क डाटा वर्णन गर्नका लागि प्रयोग गरिन्छ । यो आफैमा एउटा डाटाको ढाँचा भने हैन, यसलाई एक्सएमल ढाँचाको प्रयोग गरेर व्यक्त गर्न सकिन्छ ।</p>
 
 <h3 id="इन्टरनेट">इन्टरनेट</h3>
@@ -388,85 +423,61 @@
 <h3 id="ह्याकाथन-hackathon">ह्याकाथन (Hackathon)</h3>
 <p>यो कार्यक्रम सामान्यतया एक वा दुई दिनको हुन्छ जसमा डेभेलोपर, विषय विशेषज्ञहरू र अन्य क्षत्रका व्यक्तिहरू मिलेर र डाटा को भारी  मात्रामा प्रयोग गरेर एप्स, भीजुअलाइजेसन र प्रोटोटाइपहरूको निर्माण गर्दछन् जसले  एक विशेष डोमेनको  समस्या सम्बोधन गर्ने लक्ष्य लिएको हुन्छ ।</p>
 
-</div>
 
 
 
 
-
+<nav class="chnav" aria-label="अध्याय नेभिगेसन">
 
   
   
-  
-  <nav class="chapter-nav">
-    
-      
-      <a class="chapter-nav-link chapter-nav-prev" href="/नेपाली-नागरिकले-सूचनाको-हक-प्रयोग-गर्ने-विधि/">
-        <span class="chapter-nav-arrow">&larr;</span>
-        <span class="chapter-nav-text">
-          <span class="chapter-nav-label">अघिल्लो अध्याय</span>
-          <span class="chapter-nav-title">१७. नेपाली नागरिकले सूचनाको हक प्रयोग गर्ने विधि</span>
-        </span>
-      </a>
-    
-    
-  </nav>
+  <a class="prev" href="/नेपाली-नागरिकले-सूचनाको-हक-प्रयोग-गर्ने-विधि/"><small>&larr; अघिल्लो</small><b>१७. नेपाली नागरिकले सूचनाको हक प्रयोग गर्ने विधि</b></a>
 
 
+  <a class="next" href="/"><small>अर्को &rarr;</small><b>गृहपृष्ठमा फर्कनुहोस्</b></a>
 
-          
-        </div>
-      </div>
+</nav>
+</article></div></div></main><footer class="ftr"><div class="wrap"><div class="ftr-grid"><div><div class="fbrand"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0"/><circle cx="12" cy="16" r="1.4" fill="#fff" stroke="none"/></svg></span>खुल्ला डाटा पुस्तिका</div><p>खुल्ला डाटाका कानुनी, सामाजिक र प्राविधिक पक्षहरूको पहिलो नेपाली संस्करण। सरकारी नीति निर्माणकर्ता, नेता र साधारण नागरिकहरूका लागि।</p><div class="ftr-social"><a href="https://oknp.org" aria-label="वेबसाइट"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg></a><a href="https://github.com/opendatanepal" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.6 2 12.2c0 4.5 2.9 8.3 6.8 9.6.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.7.3-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 4.9 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6.6.7 1 1.6 1 2.7 0 3.8-2.4 4.6-4.6 4.9.3.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10.2 10.2 0 0 0 22 12.2C22 6.6 17.5 2 12 2Z"/></svg></a><a href="https://twitter.com/oknepal" aria-label="Twitter / X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 3h3.3l-7.2 8.2L23.5 21h-6.6l-5.2-6.8L5.8 21H2.5l7.7-8.8L2 3h6.8l4.7 6.2L18.9 3Zm-1.2 16h1.8L7.4 4.8H5.5L17.7 19Z"/></svg></a><a href="https://facebook.com/oknepal" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></svg></a></div></div><div class="ftr-cc"><div class="cc-line"><span class="cc-badge"><span>cc</span><span>by</span></span><span>यस साइटको सामग्री <a href="https://oknp.org">Open Knowledge Foundation Nepal</a> द्वारा <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a> अन्तर्गत उपलब्ध छ।</span></div></div></div></div></footer><button class="iconbtn totop" id="totop" aria-label="माथि जानुहोस्"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button><script>
+(function(){
+  var root=document.documentElement;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // theme toggle
+  var tb=document.getElementById('theme-toggle');
+  function sync(){var d=root.getAttribute('data-theme')==='dark';if(tb)tb.setAttribute('aria-pressed',String(d));}
+  sync();
+  if(tb){tb.addEventListener('click',function(){
+    var n=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    root.setAttribute('data-theme',n);try{localStorage.setItem('odh-theme',n);}catch(e){}sync();});}
+  // mobile menu
+  var mt=document.getElementById('menu-toggle'),nav=document.getElementById('nav');
+  if(mt){mt.addEventListener('click',function(){
+    var o=nav.classList.toggle('open');mt.setAttribute('aria-expanded',String(o));
+    mt.setAttribute('aria-label',o?'मेनु बन्द गर्नुहोस्':'मेनु खोल्नुहोस्');});
+    nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');mt.setAttribute('aria-expanded','false');});});}
+  // scrolled header + back to top + progress
+  var hdr=document.getElementById('hdr'),tt=document.getElementById('totop'),pr=document.getElementById('progress');
+  function onScroll(){
+    var y=window.pageYOffset||document.documentElement.scrollTop;
+    if(hdr)hdr.classList.toggle('scrolled',y>10);
+    if(tt)tt.classList.toggle('show',y>600);
+    if(pr){var h=document.documentElement.scrollHeight-window.innerHeight;pr.style.width=(h>0?(y/h*100):0)+'%';}
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  if(tt)tt.addEventListener('click',function(){window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});});
+  // reveal
+  var els=document.querySelectorAll('.reveal');
+  if(reduce||!('IntersectionObserver'in window)){els.forEach(function(e){e.classList.add('in');});}
+  else{var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(e){io.observe(e);});}
+  // toc mobile toggle
+  var tg=document.getElementById('toc-toggle');
+  if(tg){tg.addEventListener('click',function(){var p=document.getElementById('toc-panel');var o=p.classList.toggle('open');tg.setAttribute('aria-expanded',String(o));});}
+  // copy code
+  document.querySelectorAll('.copybtn').forEach(function(b){b.addEventListener('click',function(){
+    var pre=b.parentElement.querySelector('code');if(!pre)return;
+    navigator.clipboard.writeText(pre.innerText).then(function(){var o=b.innerHTML;b.innerHTML='भयो';setTimeout(function(){b.innerHTML=o;},1400);});});});
+})();
+</script>
 
-      <label for="sidebar-checkbox" class="sidebar-toggle"></label>
-    </div>
-
-    <footer>
-      <div class="container">
-              <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54.95 54.95" height="15px">
-                    <title>
-                        by
-</title>
-                    <path d="M7117.46,7140.15a27.23,27.23,0,0,1,27.52,27.48,25.9,25.9,0,0,1-7.85,19.28,27.15,27.15,0,0,1-19.67,8.19,27.64,27.64,0,0,1-27.43-27.48,26.93,26.93,0,0,1,8.1-19.53A26.31,26.31,0,0,1,7117.46,7140.15Zm0.1,5a21.39,21.39,0,0,0-15.85,6.57,22.11,22.11,0,0,0-6.72,15.95,22.79,22.79,0,0,0,22.57,22.47,22.06,22.06,0,0,0,16-6.72,20.93,20.93,0,0,0,6.48-15.75A22.45,22.45,0,0,0,7117.55,7145.1Zm7.36,15.7V7172h-3.14v13.35h-8.54V7172h-3.14V7160.8a1.76,1.76,0,0,1,1.77-1.77h11.28a1.73,1.73,0,0,1,1.23.52A1.67,1.67,0,0,1,7124.91,7160.8Zm-11.24-7.07q0-3.88,3.83-3.88t3.83,3.88q0,3.83-3.83,3.83T7113.68,7153.74Z" transform="translate(-7090.03 -7140.15)"></path>
-                </svg>
-            </a>
-            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54.95 54.95" width="20" height="15">
-                    <title>cc</title>
-                    <path d="M7117.46,7140.15a26.81,26.81,0,0,1,19.63,8A26.42,26.42,0,0,1,7143,7157a29,29,0,0,1,0,21.15,25.21,25.21,0,0,1-5.86,8.71A28.23,28.23,0,0,1,7128,7193a27.35,27.35,0,0,1-10.55,2.11A26.71,26.71,0,0,1,7107,7193a28.28,28.28,0,0,1-14.94-14.94,27.44,27.44,0,0,1,0-20.93,27.57,27.57,0,0,1,6.06-9A26,26,0,0,1,7117.46,7140.15Zm0.1,5a21.29,21.29,0,0,0-15.85,6.57,23.63,23.63,0,0,0-5,7.38,21.79,21.79,0,0,0,0,17.07,23.26,23.26,0,0,0,12.29,12.22,22.29,22.29,0,0,0,17.1,0,23.7,23.7,0,0,0,7.48-5,21.11,21.11,0,0,0,6.43-15.75,22.57,22.57,0,0,0-1.67-8.64,22,22,0,0,0-4.86-7.26A21.74,21.74,0,0,0,7117.55,7145.1Zm-0.34,18-3.68,1.91a3.77,3.77,0,0,0-1.45-1.72,3.26,3.26,0,0,0-1.59-.49q-3.68,0-3.68,4.86a6,6,0,0,0,.93,3.53,3.14,3.14,0,0,0,2.75,1.33,3.44,3.44,0,0,0,3.39-2.36l3.39,1.72a8.48,8.48,0,0,1-13.15,2.06,9.76,9.76,0,0,1,0-12.51,7.77,7.77,0,0,1,5.76-2.31Q7115,7159.09,7117.21,7163.06Zm15.85,0-3.63,1.91a3.77,3.77,0,0,0-1.45-1.72,3.33,3.33,0,0,0-1.64-.49q-3.68,0-3.68,4.86a6,6,0,0,0,.93,3.53,3.14,3.14,0,0,0,2.75,1.33,3.44,3.44,0,0,0,3.39-2.36l3.43,1.72a8.44,8.44,0,0,1-3,3.16,8.63,8.63,0,0,1-10.13-1.1,9.8,9.8,0,0,1,0-12.51,7.77,7.77,0,0,1,5.77-2.31Q7130.9,7159.09,7133.06,7163.06Z" transform="translate(-7090.03 -7140.15)"></path>
-                </svg>
-            </a> Content on this site, made by
-            <a href="https://oknp.org" target="_blank" rel="noopener">Open Knowledge Foundation Nepal</a>, is licensed under a
-            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons Attribution 4.0 International License.</a>
-        </div>
-    </footer>
-
-    <script>
-      (function(document) {
-        var toggle = document.querySelector('.sidebar-toggle');
-        var sidebar = document.querySelector('#sidebar');
-        var checkbox = document.querySelector('#sidebar-checkbox');
-        var masthead = document.querySelector('.masthead');
-
-        function setHeroHeight() {
-          if (masthead) {
-            document.documentElement.style.setProperty('--hero-height', masthead.offsetHeight + 'px');
-          }
-        }
-        setHeroHeight();
-        window.addEventListener('resize', setHeroHeight);
-
-        document.addEventListener('click', function(e) {
-          var target = e.target;
-
-          if(!checkbox.checked ||
-             sidebar.contains(target) ||
-             (target === checkbox || target === toggle)) return;
-
-          checkbox.checked = false;
-        }, false);
-      })(document);
-    </script>
-  </body>
+</body>
 </html>
