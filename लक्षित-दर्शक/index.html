@@ -13,11 +13,12 @@
   /* ---- OKNP locked palette (light) ---- */
   --brand:#3E8E2F; --brand-strong:#2F6E23; --brand-soft:#E8F3E1; --brand-tint:#F2F8EC;
   --accent:#E8622C; --accent-strong:#C64E1E; --accent-soft:#FCEBE2;
+  --cyan:#5CBBCF; --cyan-strong:#49AAC1; --cyan-soft:#E9F5F7;
   --ink:#1E3018; --body:#3A4536; --muted:#6B7A64; --line:#DEE7D9;
   --bg:#FFFFFF; --bg-alt:#F5F8F2; --card:#FFFFFF; --code-bg:#16240F; --code-ink:#E8F3E1;
   --ring:rgba(62,142,47,.35);
   /* spacing (8px base) */
-  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:64px; --s9:96px;
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:26px; --s6:38px; --s7:60px; --s8:76px; --s9:120px;
   /* radius + shadow */
   --r1:8px; --r2:12px; --r3:20px; --pill:999px;
   --sh1:0 1px 2px rgba(16,48,46,.06),0 1px 3px rgba(16,48,46,.05);
@@ -36,6 +37,7 @@
 :root[data-theme="dark"]{
   --brand:#79C74F; --brand-strong:#95D66F; --brand-soft:#16300F; --brand-tint:#132611;
   --accent:#FF8A5B; --accent-strong:#FFA983; --accent-soft:#3A241B;
+  --cyan:#6FC6D9; --cyan-strong:#8AD3E4; --cyan-soft:#12292C;
   --ink:#EAF3E4; --body:#C6D3BF; --muted:#8FA386; --line:#2A3F22;
   --bg:#0F1A0C; --bg-alt:#13240F; --card:#162710; --code-bg:#0A1607; --code-ink:#DCEFD2;
   --ring:rgba(121,199,79,.45);
@@ -45,7 +47,9 @@
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{
-  margin:0; background:var(--bg); color:var(--body);
+  margin:0; color:var(--body);
+  background:radial-gradient(1200px 500px at 82% -8%,var(--brand-soft),transparent 60%),
+    radial-gradient(900px 460px at -6% 8%,var(--cyan-soft),transparent 62%),var(--bg);
   font-family:'Anek Devanagari',system-ui,'Noto Sans Devanagari',sans-serif;
   font-size:var(--fs-body); line-height:var(--lh-body);
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
@@ -78,7 +82,7 @@ img{max-width:100%;display:block}
 .brand-logo{height:34px;width:auto;display:block;transition:height .25s,padding .25s;border-radius:9px}
 .hdr.scrolled .brand-logo{height:29px}
 :root[data-theme="dark"] .brand-logo{background:#fff;padding:5px 8px;box-sizing:content-box}
-.brand-div{width:1px;height:26px;background:var(--line);flex-shrink:0}
+.brand-div{width:2px;height:26px;background:linear-gradient(var(--cyan),var(--brand));border-radius:1px;flex-shrink:0;opacity:.75}
 .brand-txt{display:flex;flex-direction:column;line-height:1.15}
 .brand-txt b{font-size:.94rem;font-weight:700;letter-spacing:-.01em}
 .brand-txt span{font-size:.72rem;font-weight:600;color:var(--muted);letter-spacing:.02em}
@@ -86,7 +90,8 @@ img{max-width:100%;display:block}
 .nav a.navlink{color:var(--body); font-weight:600; font-size:.98rem; padding:8px 12px; border-radius:var(--r1); transition:background .18s,color .18s}
 .nav a.navlink:hover{background:var(--brand-soft); color:var(--brand-strong)}
 .nav .btn{padding:9px 16px;font-size:.9rem}
-.btn{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font-weight:700;font-size:.98rem;padding:11px 18px;border-radius:var(--pill);border:1.5px solid transparent;cursor:pointer;transition:transform .16s,box-shadow .2s,background .2s,color .2s;font-family:inherit}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;font-weight:700;font-size:.98rem;padding:11px 18px;border-radius:var(--pill);border:1.5px solid transparent;cursor:pointer;transition:transform .16s,box-shadow .2s,background .2s,color .2s;font-family:inherit}
+.btn svg{width:18px;height:18px;flex-shrink:0}
 .btn:active{transform:translateY(1px)}
 .btn-primary{background:var(--brand);color:#fff;box-shadow:var(--sh1)}
 .btn-primary:hover{background:var(--brand-strong);color:#fff;box-shadow:var(--sh2);transform:translateY(-1px)}
@@ -116,17 +121,19 @@ img{max-width:100%;display:block}
 .ftr h4{color:#fff;font-size:.92rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:var(--s4)}
 .ftr a{color:#a9c4bf;display:block;padding:5px 0;font-size:.96rem}
 .ftr a:hover{color:#fff}
-.ftr .fbrand{margin-bottom:var(--s4);color:#fff;font-weight:700;font-size:1rem}
+.ftr .fbrand{margin-bottom:var(--s2);color:#fff;font-weight:700;font-size:1rem}
 .ftr p{color:#9fbab5;font-size:.92rem;line-height:1.75}
 .ftr-social{display:flex;gap:10px;margin-top:var(--s4)}
 .ftr-social a{width:38px;height:38px;border-radius:var(--pill);border:1px solid rgba(255,255,255,.18);display:grid;place-items:center;padding:0}
 .ftr-social a:hover{background:var(--brand);border-color:var(--brand)}
+.ftr-social a:first-child:hover{background:var(--cyan-strong);border-color:var(--cyan-strong)}
 .ftr-social svg{width:18px;height:18px}
 .ftr-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:var(--s5);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;align-items:center;font-size:.9rem;color:#9fbab5}
 .cc-line{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .cc-badge{display:inline-flex;gap:4px}
-.cc-badge span{width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.3);display:grid;place-items:center;font-weight:800;font-size:.82rem}
-.cc-line a{display:inline;padding:0}
+.cc-badge span{width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.3);display:grid;place-items:center;font-weight:800;font-size:.88rem}
+.cc-line a{display:inline;padding:0;color:var(--cyan-strong);font-weight:600}
+.cc-line a:hover{color:#fff}
 
 /* ---- reveal ---- */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
@@ -216,6 +223,14 @@ img{max-width:100%;display:block}
   .chnav{grid-template-columns:1fr}
   .section{padding:var(--s8) 0}
 }
+@media (max-width:400px){
+  .wrap{padding:0 var(--s4)}
+  .brand{gap:var(--s2)}
+  .brand-logo{height:26px}
+  .brand-div{height:20px}
+  .brand-txt b{font-size:.82rem}
+  .hdr-in{gap:var(--s2)}
+}
 </style>
 </head>
 <body>
@@ -248,7 +263,7 @@ img{max-width:100%;display:block}
   <a class="next" href="/तपाईं-कस्तो-डाटाका-बारेमा-कुरा-गर्दै-हुनुहुन्छ/"><small>अर्को &rarr;</small><b>३. तपाईं कस्तो डाटाका बारेमा कुरा गर्दै हुनुहुन्छ?</b></a>
 
 </nav>
-</article></div></div></main><footer class="ftr"><div class="wrap"><div class="ftr-grid"><div><div class="fbrand">खुल्ला डाटा पुस्तिका</div><p>खुल्ला डाटाका कानुनी, सामाजिक र प्राविधिक पक्षहरूको पहिलो नेपाली संस्करण। सरकारी नीति निर्माणकर्ता, नेता र साधारण नागरिकहरूका लागि।</p><div class="ftr-social"><a href="https://oknp.org" aria-label="वेबसाइट"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg></a><a href="https://github.com/opendatanepal" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.6 2 12.2c0 4.5 2.9 8.3 6.8 9.6.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.7.3-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 4.9 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6.6.7 1 1.6 1 2.7 0 3.8-2.4 4.6-4.6 4.9.3.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10.2 10.2 0 0 0 22 12.2C22 6.6 17.5 2 12 2Z"/></svg></a><a href="https://twitter.com/oknepal" aria-label="Twitter / X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 3h3.3l-7.2 8.2L23.5 21h-6.6l-5.2-6.8L5.8 21H2.5l7.7-8.8L2 3h6.8l4.7 6.2L18.9 3Zm-1.2 16h1.8L7.4 4.8H5.5L17.7 19Z"/></svg></a><a href="https://facebook.com/oknepal" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></svg></a></div></div><div class="ftr-cc"><div class="cc-line"><span class="cc-badge"><span>cc</span><span>by</span></span><span>यस साइटको सामग्री <a href="https://oknp.org">Open Knowledge Foundation Nepal</a> द्वारा <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a> अन्तर्गत उपलब्ध छ।</span></div></div></div></div></footer><button class="iconbtn totop" id="totop" aria-label="माथि जानुहोस्"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button><script>
+</article></div></div></main><footer class="ftr"><div class="wrap"><div class="ftr-grid"><div><div class="fbrand">खुल्ला डाटा पुस्तिका</div><p>खुल्ला डाटाका कानुनी, सामाजिक र प्राविधिक पक्षहरूको पहिलो नेपाली संस्करण। सरकारी नीति निर्माणकर्ता, नेता र साधारण नागरिकहरूका लागि।</p><div class="ftr-social"><a href="https://oknp.org" aria-label="वेबसाइट"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg></a><a href="https://twitter.com/oknepal" aria-label="Twitter / X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 3h3.3l-7.2 8.2L23.5 21h-6.6l-5.2-6.8L5.8 21H2.5l7.7-8.8L2 3h6.8l4.7 6.2L18.9 3Zm-1.2 16h1.8L7.4 4.8H5.5L17.7 19Z"/></svg></a><a href="https://facebook.com/oknepal" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></svg></a><a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5.5a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM7 8.75H3V21h4V8.75Zm6.32 0H9.5V21h3.82v-6.37c0-3.55 4.6-3.84 4.6 0V21H22v-7.7c0-5.98-6.83-5.76-8.4-2.82l-.28.53V8.75Z"/></svg></a><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></a></div></div><div class="ftr-cc"><div class="cc-line"><span class="cc-badge"><span>cc</span><span>by</span></span><span>यस साइटको सामग्री <a href="https://oknp.org">Open Knowledge Foundation Nepal</a> द्वारा <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a> अन्तर्गत उपलब्ध छ।</span></div></div></div></div></footer><button class="iconbtn totop" id="totop" aria-label="माथि जानुहोस्"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button><script>
 (function(){
   var root=document.documentElement;
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
